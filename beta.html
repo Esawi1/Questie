@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questie Beta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-8px)" },
+              },
+              glow: {
+                "0%, 100%": { opacity: "0.6" },
+                "50%": { opacity: "1" },
+              },
+              shimmer: {
+                "0%": { backgroundPosition: "0% 50%" },
+                "100%": { backgroundPosition: "100% 50%" },
+              },
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              glow: "glow 4s ease-in-out infinite",
+              shimmer: "shimmer 10s ease infinite",
+            },
+            boxShadow: {
+              soft: "0 20px 60px rgba(0, 0, 0, 0.18)",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body class="min-h-screen bg-white text-slate-900">
+    <div id="root"></div>
+    <script type="text/babel">
+      function App() {
+        const [fullName, setFullName] = React.useState("");
+        const [email, setEmail] = React.useState("");
+        const [phone, setPhone] = React.useState("");
+        const [isSending, setIsSending] = React.useState(false);
+
+        const handleApply = async (event) => {
+          event.preventDefault();
+          if (!fullName || !email || !phone) {
+            alert("Please fill in name, email, and phone.");
+            return;
+          }
+
+          setIsSending(true);
+          try {
+            const response = await fetch("http://localhost:3000/apply", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ fullName, email, phone }),
+            });
+
+            if (!response.ok) {
+              const data = await response.json().catch(() => ({}));
+              throw new Error(data.error || "Request failed");
+            }
+
+            alert("Email sent! Please check your inbox.");
+          } catch (error) {
+            alert(`Failed to send email: ${error.message}`);
+          } finally {
+            setIsSending(false);
+          }
+        };
+        return (
+          <div className="relative min-h-screen overflow-hidden bg-white text-slate-900">
+            <div className="pointer-events-none absolute inset-0">
+              <div className="h-1/2 bg-[#5bb8ff]"></div>
+              <div className="h-1/2 bg-white"></div>
+            </div>
+
+            <div className="relative mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center px-6 py-16">
+              <header className="flex flex-col items-center text-center">
+                <img
+                  src="./QUESTIE-PDF.png"
+                  alt="Questie logo"
+                  className="h-72 w-72 translate-x-[170px] translate-y-[38px] scale-[2] transform object-contain md:h-80 md:w-80 filter invert brightness-200"
+                />
+                <div className="-mt-8 text-2xl font-light leading-none tracking-[0.6em] text-white md:text-3xl">
+                  QUESTIE
+                </div>
+              </header>
+
+              <main className="mt-10 w-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-soft">
+                <div className="bg-sky-100 px-8 py-6">
+                  <h1 className="text-2xl font-semibold text-slate-900">Basic Information</h1>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Please share your contact details to apply for the Questie beta.
+                  </p>
+                </div>
+
+                <form className="space-y-5 px-8 py-6" onSubmit={handleApply}>
+                  <div>
+                    <label className="text-sm text-slate-600">Full name</label>
+                    <input
+                      type="text"
+                      value={fullName}
+                      onChange={(event) => setFullName(event.target.value)}
+                      placeholder="Your name"
+                      className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition duration-300 focus:border-blue-300 focus:ring-4 focus:ring-blue-200"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm text-slate-600">Email address</label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(event) => setEmail(event.target.value)}
+                      placeholder="you@example.com"
+                      className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition duration-300 focus:border-blue-300 focus:ring-4 focus:ring-blue-200"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm text-slate-600">Phone number</label>
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(event) => setPhone(event.target.value)}
+                      placeholder="+20 10 1234 5678"
+                      className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none transition duration-300 focus:border-blue-300 focus:ring-4 focus:ring-blue-200"
+                    />
+                  </div>
+
+                  <button
+                    className="mt-6 w-full rounded-2xl bg-[#5bb8ff] px-6 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-white transition duration-300 hover:scale-[1.01] hover:bg-[#4aaeff] hover:shadow-[0_20px_50px_rgba(91,184,255,0.45)] focus:outline-none focus:ring-4 focus:ring-blue-200"
+                    type="submit"
+                    disabled={isSending}
+                  >
+                    {isSending ? "Sending..." : "Apply for Beta"}
+                  </button>
+                </form>
+              </main>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "questie-mailer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "resend": "^4.0.1"
+  }
+}

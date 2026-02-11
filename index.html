@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questie - First Page</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Poppins:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-white font-sans overflow-hidden">
+    <main class="min-h-screen overflow-hidden">
+      <div class="grid min-h-screen grid-cols-1 md:grid-cols-2">
+        <section class="flex items-center justify-center bg-[#1098ff]">
+          <div class="text-center">
+            <img
+              src="./QUESTIE-PDF.png"
+              alt="Questie logo"
+              class="mx-auto h-72 w-72 translate-x-[350px] scale-[4] transform object-contain md:h-80 md:w-80"
+            />
+            <img
+              src="./QUESTIE.png"
+              alt="Questie wordmark"
+              class="-mt-8 h-10 w-auto translate-x-[70px] scale-[3] transform object-contain filter invert brightness-200 contrast-125 md:h-12"
+            />
+          </div>
+        </section>
+        <section class="relative flex items-center justify-center bg-white">
+          <div class="relative">
+            <img
+              src="./phone.png"
+              alt="Phone"
+              class="h-[36rem] w-auto -translate-x-[290px] scale-[1.7] transform object-contain md:h-[44rem]"
+            />
+            <img
+              src="./plane.png"
+              alt="Plane icon"
+              class="absolute bottom-1 right-[250px] z-20 h-16 w-16 -translate-x-[380px] -translate-y-[325px] scale-[20] transform object-contain"
+            />
+            <img
+              src="./person.png"
+              alt="Person icon"
+              class="absolute bottom-1 right-[250px] z-20 h-16 w-16 -translate-x-[380px] -translate-y-[304px] scale-[20] transform object-contain"
+            />
+          </div>
+          <div
+            class="absolute left-0 right-0 top-1/2 z-30 px-6"
+            style="margin-top: 2cm;"
+          >
+            <p class="w-full text-[15px] font-light leading-relaxed text-slate-600" style="text-align: justify;">
+              “<span class="font-semibold">Questie</span> is a platform where quests can be created and discovered on a map. People
+              can take part solo or with others, complete objectives, and earn rewards along the way”
+            </p>
+            <div class="mt-[1cm] flex justify-center">
+              <button
+                type="button"
+                onclick="window.location.href='./beta.html'"
+                class="pointer-events-auto rounded-md bg-slate-300 px-10 py-3 text-sm font-medium text-white transition hover:bg-[#5bb8ff]"
+              >
+                Apply for Beta
+              </button>
+            </div>
+            <p class="mt-[2cm] text-center text-sm font-medium text-slate-500">
+              contact: mohdfakhroo@questie-app.com
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
