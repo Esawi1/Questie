@@ -30,44 +30,94 @@
       };
     </script>
   </head>
-  <body class="min-h-screen bg-white font-sans overflow-hidden">
-    <main class="min-h-screen overflow-hidden">
+  <body class="min-h-screen bg-white font-sans">
+    <main class="min-h-screen">
       <div class="grid min-h-screen grid-cols-1 md:grid-cols-2">
         <section class="flex items-center justify-center bg-[#1098ff]">
           <div class="text-center">
+            <div class="md:hidden">
+              <img
+                src="./QUESTIE-PDF.png"
+                alt="Questie logo"
+                class="mx-auto h-28 w-28 translate-x-[76px] scale-[3] transform object-contain"
+              />
+              <img
+                src="./QUESTIE.png"
+                alt="Questie wordmark"
+                class="mt-2 h-7 w-auto scale-[3] transform object-contain filter invert brightness-200 contrast-125"
+              />
+            </div>
             <img
               src="./QUESTIE-PDF.png"
               alt="Questie logo"
-              class="mx-auto h-72 w-72 translate-x-[350px] scale-[4] transform object-contain md:h-80 md:w-80"
+              class="mx-auto hidden h-56 w-56 object-contain md:block md:h-80 md:w-80 md:translate-x-[350px] md:scale-[4]"
             />
             <img
               src="./QUESTIE.png"
               alt="Questie wordmark"
-              class="-mt-8 h-10 w-auto translate-x-[70px] scale-[3] transform object-contain filter invert brightness-200 contrast-125 md:h-12"
+              class="hidden -mt-3 h-8 w-auto object-contain filter invert brightness-200 contrast-125 md:block md:-mt-8 md:h-12 md:translate-x-[70px] md:scale-[3]"
             />
           </div>
         </section>
         <section class="relative flex items-center justify-center bg-white">
-          <div class="relative">
+          <div class="relative flex w-full flex-col items-center gap-6 md:hidden">
+            <div class="relative flex items-start justify-center gap-2 -translate-x-[228px] translate-y-[114px]">
+              <img
+                src="./phone.png"
+                alt="Phone"
+                class="h-72 w-auto scale-[2] transform object-contain"
+              />
+              <div class="flex flex-col gap-3 -translate-y-[190px]">
+                <img
+                  src="./plane.png"
+                  alt="Plane icon"
+                  class="h-28 w-28 object-contain"
+                />
+                <img
+                  src="./person.png"
+                  alt="Person icon"
+                  class="h-28 w-28 object-contain"
+                />
+              </div>
+            </div>
+            <div class="px-6 text-center">
+              <p class="text-[14px] font-light leading-relaxed text-slate-600">
+                “<span class="font-semibold">Questie</span> is a platform where quests can be created and discovered on a map. People
+                can take part solo or with others, complete objectives, and earn rewards along the way”
+              </p>
+              <div class="mt-6 flex justify-center">
+                <button
+                  type="button"
+                  onclick="window.location.href='./beta.html'"
+                  class="rounded-md bg-slate-300 px-8 py-3 text-sm font-medium text-white transition hover:bg-[#5bb8ff]"
+                >
+                  Apply for Beta
+                </button>
+              </div>
+              <p class="mt-6 text-sm font-medium text-slate-500">
+                contact: mohdfakhroo@questie-app.com
+              </p>
+            </div>
+          </div>
+          <div class="relative hidden md:block">
             <img
               src="./phone.png"
               alt="Phone"
-              class="h-[36rem] w-auto -translate-x-[290px] scale-[1.7] transform object-contain md:h-[44rem]"
+              class="h-[44rem] w-auto -translate-x-[290px] scale-[1.7] transform object-contain"
             />
             <img
               src="./plane.png"
               alt="Plane icon"
-              class="absolute bottom-1 right-[250px] z-20 h-16 w-16 -translate-x-[380px] -translate-y-[325px] scale-[20] transform object-contain"
+              class="absolute bottom-1 right-[300px] z-20 h-16 w-16 -translate-x-[300px] -translate-y-[325px] scale-[20] transform object-contain"
             />
             <img
               src="./person.png"
               alt="Person icon"
-              class="absolute bottom-1 right-[250px] z-20 h-16 w-16 -translate-x-[380px] -translate-y-[304px] scale-[20] transform object-contain"
+              class="absolute bottom-1 right-[310px] z-20 h-16 w-16 -translate-x-[310px] -translate-y-[304px] scale-[20] transform object-contain"
             />
           </div>
           <div
-            class="absolute left-0 right-0 top-1/2 z-30 px-6"
-            style="margin-top: 2cm;"
+            class="z-30 mt-6 hidden px-6 text-center md:absolute md:left-0 md:right-0 md:top-1/2 md:mt-[2cm] md:block"
           >
             <p class="w-full text-[15px] font-light leading-relaxed text-slate-600" style="text-align: justify;">
               “<span class="font-semibold">Questie</span> is a platform where quests can be created and discovered on a map. People
